@@ -1,40 +1,26 @@
 # Campaign Audit
 
-## Completion record
+## Current publication record
 
-- Campaign state: complete
+- Campaign state: building
 - Audited branch: `main`
-- Job posting: supplied in chat; no public posting URL provided
-- Live site: https://russelldudek.github.io/Foundation/
+- Current main head includes a self-contained `index.html` and `404.html`
+- Matching files are present on `gh-pages`
+- GitHub Pages deployment workflow is configured from `main`
+- Live HTTP verification: pending external confirmation
 
-## Publication and artifact gates
+## Verified source-level gates
 
-- Complete approved source and artifact set present on `main`: passed
-- GitHub Pages deployment from `main`: passed
-- Candidate-facing routes and relative links: passed
-- Generated PDF downloads present and page-count verified: passed
-- Official Foundation Data wordmark locally stored and visibly used: passed
-- Visible company identity above the fold: passed
-- Color-token provenance: passed
-- Typography decision: passed with documented licensed substitute
-- Document brand continuity: passed
+- Candidate homepage present on `main`: passed
+- Candidate homepage present on `gh-pages`: passed
+- Official Foundation Data wordmark embedded and visible above the fold: passed
 - Independent-candidate distinction: passed
-- Visual experience across desktop, laptop, tablet, 390-pixel mobile, and 320-pixel mobile: passed
-- Role-derived motion and meaningful interaction: passed
-- Smart baseline and reset behavior: passed
-- Keyboard interaction and ARIA state behavior: passed
-- Illustrative-number labeling and comparison integrity: passed
-- Responsive horizontal overflow: 0
-- Reduced-motion behavior: passed
-- Browser console errors: 0
-- Resume PDF: exactly 2 pages
-- Cover-letter PDF: exactly 1 page
-- Interview thesis brief PDF: exactly 4 pages
-- 120-day plan PDF: exactly 3 pages
-- Operating review PDF: exactly 2 pages
-- Reciprocal resume / cover-letter navigation: passed
-- Candidate-facing confidentiality scan: passed with zero forbidden internal-name matches
+- Responsive CSS for desktop, tablet, and mobile: present
+- Reduced-motion treatment: present
+- Keyboard-accessible scenario controls: present
+- Illustrative-number labeling and comparison integrity: present
+- Candidate-facing confidentiality scan of the published homepage: passed
 
-## Strategic continuity
+## Not yet classified as complete
 
-Every surface advances one role-specific argument: Foundation Data's next operating system should make executive strategy load-bearing by connecting Scout, tagging, analytics, marketing, data, and AI initiatives to customer decisions, economics, accountable ownership, dependencies, capacity, trust, evidence, and explicit portfolio decisions.
+The campaign must not be called complete until the live GitHub Pages URL returns the intended homepage and the remaining document routes and PDF downloads are confirmed from the deployed site.
