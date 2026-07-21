@@ -57,7 +57,7 @@ jobs:
       - name: Run interaction regression audit
         shell: bash
         run: |
-          cat > /tmp/audit.mjs <<'AUDIT'
+          cat > scripts/release-audit.mjs <<'AUDIT'
           import { chromium } from 'playwright';
           import { resolve } from 'node:path';
           import { pathToFileURL } from 'node:url';
@@ -86,7 +86,7 @@ jobs:
           assert(errors.length === 0, `Browser errors: ${errors.join('; ')}`);
           await browser.close();
           AUDIT
-          node /tmp/audit.mjs
+          node scripts/release-audit.mjs
 
       - name: Verify document and PDF contracts
         shell: bash
