@@ -1,0 +1,14 @@
+{
+  "component": "Execution Load Test",
+  "expectedFlow": [
+    "Growth objective",
+    "Initiative contract",
+    "Parallel stress test",
+    "Decision posture",
+    "Recommended next decision"
+  ],
+  "dimensionsAreParallel": true,
+  "dimensions": ["Revenue", "Capacity", "Trust", "Adoption"],
+  "antiPattern": "Revenue, Capacity, Trust, and Adoption must not be drawn or animated as a sequential pipeline.",
+  "status": "failing-until-diagram-is-rebuilt"
+}
