@@ -21,21 +21,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out bootstrap commit
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
       - name: Reconstruct source package
         run: |
+          set -euo pipefail
           cat bootstrap/source.b64.* | base64 --decode > /tmp/foundation-source.zip
           echo '20fb6dcaebf258db238c3c0f190c0ea177ee431ee9b6230b107816febaa71c0a  /tmp/foundation-source.zip' | sha256sum --check
           unzip -t /tmp/foundation-source.zip
           unzip -oq /tmp/foundation-source.zip -d .
           rm -rf bootstrap .github/workflows/bootstrap.yml docs
       - name: Set up Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
           cache: npm
       - name: Install dependencies
         run: npm ci
