@@ -11,17 +11,46 @@ permissions:
   contents: write
 
 jobs:
-  publish-source:
+  publish-campaign:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Reconstruct audited source
         run: |
           cat .payload/part* | base64 --decode > /tmp/foundation-source.zip
           echo '9cac3e0b2d0b56f298427cc2feb101cc32838f3873e5ec893e3d745112602d98  /tmp/foundation-source.zip' | sha256sum --check
           unzip -o /tmp/foundation-source.zip -d .
           rm -rf .payload .github/workflows/bootstrap.yml
-      - name: Commit readable campaign source
+      - name: Install document renderer
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright==1.57.0 pypdf==5.9.0
+          python -m playwright install --with-deps chromium
+      - name: Generate PDFs from authoritative HTML
+        run: python generate_pdfs.py
+      - name: Verify exact pagination
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from pypdf import PdfReader
+          expected = {
+              'Russell-Dudek-Foundation-Data-Resume.pdf': 2,
+              'Russell-Dudek-Foundation-Data-Cover-Letter.pdf': 1,
+              'Russell-Dudek-Foundation-Data-Interview-Thesis-Brief.pdf': 2,
+              'Russell-Dudek-Foundation-Data-120-Day-Plan.pdf': 2,
+              'Russell-Dudek-Foundation-Data-Operating-Review.pdf': 2,
+          }
+          for name, page_count in expected.items():
+              path = Path('docs') / name
+              assert path.exists() and path.stat().st_size > 0, name
+              actual = len(PdfReader(str(path)).pages)
+              assert actual == page_count, f'{name}: expected {page_count}, got {actual}'
+              print(f'{name}: {actual} pages')
+          PY
+      - name: Commit complete readable campaign and downloads
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
