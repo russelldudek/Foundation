@@ -1,1 +1,0 @@
-(()=>{const files=['app-1.js','app-2.js','app-3.js'];let i=0;const load=()=>{if(i>=files.length)return;const s=document.createElement('script');s.src=files[i++];s.onload=load;document.head.appendChild(s)};load()})();
