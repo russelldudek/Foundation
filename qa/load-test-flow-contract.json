@@ -1,5 +1,6 @@
 {
   "component": "Execution Load Test",
+  "validatedAt": "2026-07-21",
   "expectedFlow": [
     "Growth objective",
     "Initiative contract",
@@ -9,6 +10,19 @@
   ],
   "dimensionsAreParallel": true,
   "dimensions": ["Revenue", "Capacity", "Trust", "Adoption"],
-  "antiPattern": "Revenue, Capacity, Trust, and Adoption must not be drawn or animated as a sequential pipeline.",
-  "status": "failing-until-diagram-is-rebuilt"
+  "antiPatternRemoved": "Revenue, Capacity, Trust, and Adoption are no longer drawn or animated as a sequential pipeline.",
+  "interactionProof": {
+    "scoutPosture": "Sequence for scale",
+    "internalAIPosture": "Pilot with a capacity contract",
+    "internalAITrustState": "Constraint",
+    "selectedScenarioAfterClick": "internal"
+  },
+  "renderChecks": {
+    "desktopViewport": [1440, 1000],
+    "mobileViewport": [390, 844],
+    "horizontalOverflow": 0,
+    "consoleErrors": [],
+    "memberCount": 4
+  },
+  "status": "passing"
 }
