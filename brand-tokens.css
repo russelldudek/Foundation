@@ -1,0 +1,11 @@
+:root {
+  /* source-sampled from Foundation Data's current public site and official logo */
+  --brand-foundation-navy: #07162f;
+  --brand-foundation-blue: #2f8cff;
+  --brand-foundation-sky: #62b7ff;
+  --brand-foundation-white: #ffffff;
+  --brand-foundation-paper: #f5f8fc;
+  /* candidate-original role-metaphor accents, subordinate to employer colors */
+  --campaign-load-cyan: #43dfd1;
+  --campaign-load-violet: #7867ff;
+}
