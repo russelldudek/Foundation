@@ -1,0 +1,195 @@
+set 0 1px rgba(255,255,255,.12), 0 0 30px rgba(47,116,255,.15); } 50% { transform: scale(1.07); box-shadow: inset 0 1px rgba(255,255,255,.18), 0 0 52px rgba(89,240,206,.34); } }
++.route-pulse { opacity: .95; }
++
++.scenario-tab { min-height: 72px; }
++.scenario-tab:hover { border-color: rgba(71,161,255,.25); transform: translateX(2px); }
++.scenario-tab:active { transform: translateX(3px) scale(.99); }
++.reset-scenario { margin-top: 14px; border: 1px solid rgba(126,169,221,.18); border-radius: 10px; text-decoration: none; transition: color .2s ease, border-color .2s ease, background .2s ease; }
++.reset-scenario:hover,
++.reset-scenario:focus-visible { color: white; border-color: rgba(89,240,206,.4); background: rgba(89,240,206,.055); }
++.loadframe-board[aria-busy="true"] { cursor: progress; }
++
++.document-links a { grid-template-columns: 54px 1fr auto; padding-inline: 0 8px; }
++.document-links i { color: #82a4ca; font-size: .69rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; transition: color .2s ease, transform .2s ease; }
++.document-links a:hover i,
++.document-links a:focus-visible i { color: var(--signal-mint); transform: translateX(4px); }
++.document-links a:focus-visible { border-radius: 8px; }
++
++.js .motion-reveal { opacity: 0; transform: translateY(26px); filter: blur(4px); transition: opacity .75s cubic-bezier(.2,.8,.2,1), transform .75s cubic-bezier(.2,.8,.2,1), filter .75s ease; transition-delay: var(--reveal-delay, 0ms); }
++.js .motion-reveal.is-visible { opacity: 1; transform: none; filter: none; }
++.js .hero-copy > *,
++.js .hero-system { opacity: 0; transform: translateY(18px); }
++.js body.is-ready .hero-copy > *,
++.js body.is-ready .hero-system { opacity: 1; transform: none; transition: opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1); }
++.js body.is-ready .hero-copy > *:nth-child(2) { transition-delay: 80ms; }
++.js body.is-ready .hero-copy > *:nth-child(3) { transition-delay: 150ms; }
++.js body.is-ready .hero-copy > *:nth-child(4) { transition-delay: 220ms; }
++.js body.is-ready .hero-copy > *:nth-child(5) { transition-delay: 290ms; }
++.js body.is-ready .hero-system { transition-delay: 180ms; }
++
++@media (max-width: 1120px) {
++  .hero-shell { grid-template-columns: minmax(430px, .9fr) minmax(520px, 1.1fr); gap: 34px; }
++  .hero h1 { font-size: clamp(3.55rem, 5.65vw, 4.9rem); }
++  .moment-shell { grid-template-columns: 1fr 1fr; }
++}
++@media (max-width: 900px) {
++  .hero-shell { grid-template-columns: 1fr; }
++  .hero-copy { max-width: 720px; }
++  .hero h1 { font-size: clamp(3.8rem, 10vw, 5.6rem); }
++  .scorecard-heading h2,
++  .entry-heading h2 { max-width: none; }
++}
++@media (max-width: 700px) {
++  .hero h1 { font-size: clamp(3rem, 13.2vw, 4.2rem); line-height: .94; letter-spacing: -.048em; }
++  .hero-line { white-space: nowrap; }
++  .hero-actions { gap: 14px; }
++  .hero-principles div { grid-template-columns: 82px 1fr; }
++  .moment-narrative h2,
++  .section-heading h2,
++  .cadence-intro h2,
++  .scorecard-heading h2,
++  .evidence-heading h2,
++  .entry-heading h2,
++  .questions-shell h2,
++  .documents-shell h2 { font-size: clamp(2.35rem, 10.5vw, 3.4rem); line-height: 1.02; }
++  .document-links i { font-size: .62rem; }
++}
++@media (max-width: 360px) {
++  .hero h1 { font-size: 2.65rem; }
++  .role-label { font-size: .67rem; letter-spacing: .15em; }
++}
++@media (prefers-reduced-motion: reduce) {
++  .js .motion-reveal,
++  .js .hero-copy > *,
++  .js .hero-system { opacity: 1 !important; transform: none !important; filter: none !important; }
++}
++.doc-toolbar button { border: 0; cursor: pointer; }
++.doc-toolbar button:hover,
++.doc-toolbar button:focus-visible { filter: brightness(1.08); transform: translateY(-1px); }
++html, body { max-width: 100%; overflow-x: clip; }
++main, section, .section-shell, .moment-shell, .cadence-intro, .scorecard-shell, .entry-shell, .questions-shell, .documents-shell { min-width: 0; max-width: 100%; }
++.moment-shell > *, .cadence-intro > *, .scorecard-shell > *, .entry-shell > *, .questions-shell > *, .documents-shell > * { min-width: 0; }
++.hero-atmosphere, .documents-section { contain: paint; }
+--- /tmp/foundation-publish/app.js	2026-07-20 22:42:14.833104192 +0000
++++ /tmp/foundation-deploy/app.js	2026-07-21 00:27:43.353093388 +0000
+@@ -1,3 +1,5 @@
++document.documentElement.classList.add('js');
++
+ const scenarioData = {
+   scout: {
+     title: 'Scout acceleration',
+@@ -71,6 +73,9 @@
+ function setScenario(key, { focus = false } = {}) {
+   if (!loadframe || !scenarioData[key]) return;
+   const scenario = scenarioData[key];
++  const board = loadframe.querySelector('.loadframe-board');
++  board?.setAttribute('aria-busy', 'true');
++  loadframe.dataset.activeScenario = key;
+ 
+   loadframe.querySelectorAll('[data-scenario]').forEach((button) => {
+     const selected = button.dataset.scenario === key;
+@@ -107,12 +112,12 @@
+     if (copy) copy.textContent = load.copy;
+   });
+ 
+-  const board = loadframe.querySelector('.loadframe-board');
+   if (board && !prefersReducedMotion) {
+     board.classList.remove('is-updating');
+     void board.offsetWidth;
+     board.classList.add('is-updating');
+   }
++  window.setTimeout(() => board?.setAttribute('aria-busy', 'false'), prefersReducedMotion ? 0 : 560);
+ }
+ 
+ loadframe?.querySelectorAll('[data-scenario]').forEach((button) => {
+@@ -153,3 +158,93 @@
+ updateHeader();
+ window.addEventListener('scroll', updateHeader, { passive: true });
+ 
++
++
++// Motion should clarify the operating story, not merely decorate it.
++requestAnimationFrame(() => document.body.classList.add('is-ready'));
++
++const revealGroups = [
++  '.moment-narrative',
++  '.moment-list article',
++  '.mandate-panel',
++  '.section-heading',
++  '.loadframe-app',
++  '.cadence-intro',
++  '.cadence-rail li',
++  '.scorecard-heading',
++  '.metric-ledger article',
++  '.evidence-heading',
++  '.evidence-map article',
++  '.entry-heading',
++  '.phase-track article',
++  '.questions-shell > div:first-child',
++  '.question-list li',
++  '.documents-shell > div:first-child',
++  '.document-links a'
++];
++const revealTargets = [...document.querySelectorAll(revealGroups.join(','))];
++revealTargets.forEach((element, index) => {
++  element.classList.add('motion-reveal');
++  element.style.setProperty('--reveal-delay', `${Math.min((index % 5) * 55, 220)}ms`);
++});
++
++if (prefersReducedMotion || !('IntersectionObserver' in window)) {
++  revealTargets.forEach((element) => element.classList.add('is-visible'));
++} else {
++  const revealObserver = new IntersectionObserver((entries, observer) => {
++    entries.forEach((entry) => {
++      if (!entry.isIntersecting) return;
++      entry.target.classList.add('is-visible');
++      observer.unobserve(entry.target);
++    });
++  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
++  revealTargets.forEach((element) => revealObserver.observe(element));
++}
++
++const navLinks = [...document.querySelectorAll('.desktop-nav a[href^="#"]')];
++const navSections = navLinks
++  .map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) }))
++  .filter(({ section }) => section);
++if ('IntersectionObserver' in window) {
++  const navObserver = new IntersectionObserver((entries) => {
++    const visible = entries
++      .filter((entry) => entry.isIntersecting)
++      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
++    if (!visible) return;
++    navLinks.forEach((link) => link.removeAttribute('aria-current'));
++    navSections.find(({ section }) => section === visible.target)?.link.setAttribute('aria-current', 'location');
++  }, { rootMargin: '-28% 0px -60% 0px', threshold: [0.05, 0.2, 0.5] });
++  navSections.forEach(({ section }) => navObserver.observe(section));
++}
++
++const signalInputs = [...document.querySelectorAll('.signal-in article')];
++const signalOutputs = [...document.querySelectorAll('.signal-out article')];
++const scoutCore = document.querySelector('.scout-core');
++let signalIndex = 0;
++function advanceSignal() {
++  signalInputs.forEach((node) => node.classList.remove('is-active'));
++  signalOutputs.forEach((node) => node.classList.remove('is-active'));
++  signalInputs[signalIndex]?.classList.add('is-active');
++  signalOutputs[signalIndex]?.classList.add('is-active');
++  scoutCore?.classList.remove('is-processing');
++  void scoutCore?.offsetWidth;
++  scoutCore?.classList.add('is-processing');
++  signalIndex = (signalIndex + 1) % Math.max(signalInputs.length, 1);
++}
++if (!prefersReducedMotion && signalInputs.length) {
++  advanceSignal();
++  window.setInterval(advanceSignal, 1350);
++} else {
++  document.querySelector('.system-routes')?.pauseAnimations?.();
++}
++
++// Keep internal navigation feeling immediate and preserve keyboard focus context.
++document.querySelectorAll('a[href^="#"]').forEach((link) => {
++  link.addEventListener('click', (event) => {
++    const target = document.querySelector(link.getAttribute('href'));
++    if (!target) return;
++    event.preventDefault();
++    target.scro
