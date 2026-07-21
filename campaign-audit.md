@@ -1,6 +1,6 @@
 # Foundation Data Candidate Campaign Audit
 
-Campaign state: `building` until the corrected live GitHub Pages deployment is independently retrieved and matched to the final `main` head.
+Campaign state: `blocked` only on independent live-edge retrieval from this execution environment. The corrected readable source, generated documents, and publication branch are synchronized to the same final release head.
 
 ## Material correction
 
@@ -8,10 +8,10 @@ Campaign state: `building` until the corrected live GitHub Pages deployment is i
 - Why prior QA missed it: source-level animation and fallback-state checks proved mechanics but did not meet the user's perceived-craft threshold.
 - Rejected execution: two-dimensional structural loadframe as the primary hero visual.
 - Approved correction: Decision Chassis - custom WebGL2 / GLSL particle assembly and structural build on capable desktops, with a designed semantic SVG equivalent for tablet, mobile, reduced-motion, coarse-pointer, and renderer-failure states.
-- Additional correction: removed an irrelevant credential from the role-aligned resume and regenerated the two-page PDF.
+- Additional correction: removed the irrelevant credential from the role-aligned resume and regenerated the two-page PDF.
 - Regression assertions: the visual appears in the first viewport at 768, 390, and 320 pixels; the sequence initializes, changes stage, settles, replays, and resolves under reduced motion; no horizontal overflow; the final resume and extracted PDF text contain no removed-credential language.
 
-## Passed local gates
+## Passed campaign gates
 
 - Official Foundation Data identity above the fold: passed
 - One dominant thesis and one primary hero visual: passed
@@ -30,9 +30,12 @@ Campaign state: `building` until the corrected live GitHub Pages deployment is i
 - Resume PDF pagination: exactly 2 pages
 - Resume full-page visual review: passed
 - Resume PDF removed-credential text scan: zero matches
+- Readable corrected source on `main`: passed
+- Rejected assembled-hero assets and temporary payload files removed: passed
+- Normal PDF workflow restored: passed
+- `main` and `gh-pages` synchronized to the same release: passed
+- Canonical campaign-builder alignment: passed
 
-## Remaining publication gates
+## Remaining verification limitation
 
-- Commit readable corrected source, revised resume, and generated PDF to `main`
-- Synchronize `gh-pages` to the exact corrected commit
-- Retrieve the public Pages URL and verify the corrected hero controller, mobile equivalent, document routes, and PDF download against the final head
+The execution environment cannot resolve `russelldudek.github.io`, so it cannot independently retrieve the final GitHub Pages edge response or render the capable-desktop WebGL path from the public hostname. This does not affect the committed source or synchronized publication branch, but the campaign remains `blocked` rather than `complete` under the strict completion contract until the live hostname is retrieved and matched to the final release.
