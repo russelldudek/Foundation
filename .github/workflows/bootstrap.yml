@@ -77,3 +77,5 @@ jobs:
           git commit -m 'Publish complete Foundation Data candidate campaign'
           git push origin HEAD:main
           git push origin HEAD:gh-pages --force
+
+# Native contents commit intentionally triggers this one-shot publisher.
