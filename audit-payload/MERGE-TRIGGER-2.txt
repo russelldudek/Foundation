@@ -1,0 +1,1 @@
+Ensure the audited publication workflow receives a native merged push.

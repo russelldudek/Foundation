@@ -1,0 +1,1 @@
+Run publication and live verification.
