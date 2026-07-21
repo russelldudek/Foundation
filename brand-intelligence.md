@@ -16,7 +16,7 @@
 ## Official identity asset
 
 - Official logo source: Foundation Data public website image endpoint serving `/logo-white.webp`.
-- Local paths: `assets/brand/foundation-data-logo-white.webp` and `assets/brand/foundation-data-logo-white-trimmed.webp`.
+- Local path used: `assets/brand/foundation-data-logo-white-trimmed.webp`.
 - Use: nominative identification only, paired with `Candidate vision for Director of Operations by Russell Dudek`.
 - Treatment: unmodified, contained, aspect ratio preserved, no recoloring, tracing, animation, or merger into candidate artwork.
 
@@ -24,31 +24,41 @@
 
 - `#07162f` - source-sampled dark navy from the current Foundation Data site and logo context.
 - `#2f8cff` - source-sampled bright blue used as the primary digital accent in the current public visual system.
-- `#62b7ff` - source-sampled light blue support tone.
+- `#62b7ff` - source-sampled light-blue support tone.
 - `#ffffff` and `#f5f8fc` - public-site white and cool-light surfaces.
-- `#43dfd1` and `#7867ff` - candidate-original accents used only to express load transfer, trust, and constrained execution states.
+- `#43dfd1` and `#7867ff` - candidate-original accents used only to express signal resolution, operating alignment, and decision release.
 
 ## Typography decision
 
-The current public site uses a modern geometric/humanist sans-serif character with heavy display headings, compact supporting labels, and clean body copy. No public license allowing extraction of proprietary webfont binaries was identified. The campaign therefore uses a documented system substitute stack: Aptos / Avenir Next / Segoe UI / system sans-serif. The implementation reproduces the observed character through weight, tracking, line height, and density rather than claiming the substitute is official.
+The current public site uses a modern geometric/humanist sans-serif character with heavy display headings, compact supporting labels, and clean body copy. No public license allowing extraction of proprietary webfont binaries was identified. The campaign uses Aptos / Avenir Next / Segoe UI / system sans-serif and reproduces the observed character through weight, tracking, line height, density, and high-contrast scale rather than claiming the substitute is official.
 
 ## Public visual grammar
 
 - Dark navy digital surfaces with bright blue emphasis.
 - Large compact sans-serif headlines and high-contrast white typography.
-- Clean line systems, restrained geometry, cool-white sections, and low-noise interface components.
-- Product language centers on standardization, comparability, clarity, prioritization, and AI-ready infrastructure.
-- Motion character selected for this campaign: calm one-shot load transfer that initializes, passes through the operating structure, and settles.
+- Clean line systems, restrained geometry, cool-white editorial sections, and low-noise interface components.
+- Product language centered on standardization, comparability, clarity, prioritization, and AI-ready infrastructure.
 
 ## Role-to-brand translation
 
-Foundation Data promises a trusted foundation for decisions. The campaign translates that promise into a candidate-original structural metaphor: an Execution Load Test that shows whether Scout, tagging, analytics, or internal AI work is supported by revenue logic, capacity, trust, adoption, ownership, dependencies, and evidence. The metaphor is original candidate work and does not imitate a Foundation Data product interface.
+Foundation Data converts fragmented automotive data into trusted decision infrastructure. The revised campaign translates that promise into the **Decision Chassis**: a candidate-created automotive operating structure in which dispersed signals assemble into longitudinal rails, cross-members, and a shared decision spine. The hero uses a locally authored WebGL2 / GLSL renderer on capable desktop devices, a designed semantic SVG equivalent on handheld or constrained devices, a one-shot build sequence, and a stable final state. The official logo remains separate and unmodified.
+
+The visual is intentionally not a generic constellation, orbit, dashboard, control room, or product-interface imitation. It represents the role's actual work: standardize the signal, align the operating load, and release a decision that can carry growth.
+
+## Motion and interaction decision
+
+- Desktop-capable path: custom WebGL2 and GLSL particle assembly plus structural line construction.
+- Mobile, tablet, reduced-motion, coarse-pointer, and WebGL-unavailable path: lightweight semantic SVG with the same three-stage meaning.
+- Motion sequence: fragmented signals -> shared operating chassis -> decision pulse -> stable resolved state.
+- Replay is deliberate and user-controlled.
+- No perpetual particle loop, spinning ring, decorative scan, or continuous packet animation.
+- The separate Execution Load Test remains the meaningful participatory artifact and atomically updates initiative, posture, ownership, dependencies, evidence, structural supports, and executive decision.
 
 ## Artifact application
 
-- Website: full navy/blue identity, official logo above the fold, structural loadframe, cyan load-transfer accent.
-- Resume and cover letter: conservative white executive layout with navy rules, teal/blue section cues, subtle official logo chip, complete candidate-vision URL.
-- Interview brief, entry plan, and operating review: the same document grammar with loadframe terminology, source notes, consistent page furniture, and native PDF downloads.
+- Website: full navy/blue identity, official logo above the fold, Decision Chassis hero, and role-specific Execution Load Test.
+- Resume and cover letter: conservative white executive layout with navy rules, teal/blue section cues, official logo chip, complete candidate-vision URL, and native PDF download.
+- Interview brief, entry plan, and Initiative Load Review: the same document grammar, terminology, source notes, consistent page furniture, and browser-first reading.
 
 ## Independent-candidate distinction
 

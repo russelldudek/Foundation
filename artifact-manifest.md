@@ -2,17 +2,11 @@
 
 ## Candidate vision
 - index.html
-- site-1.css
-- site-2.css
-- site-3.css
-- home-part1.js
-- home-part2.js
-- home-part3.js
-- home-render.js
+- site.css
+- hero-engine.js
 - app.js
 - brand-tokens.css
 - brand-intelligence.md
-- assets/brand/foundation-data-logo-white.webp
 - assets/brand/foundation-data-logo-white-trimmed.webp
 
 ## Browser-readable documents
@@ -35,5 +29,7 @@
 - .github/workflows/build-pdfs.yml
 - README.md
 - campaign-audit.md
+- qa/hero-regression.json
+- qa/resume-screen-qa.json
 
 All routes are readable source. No archive, encoded payload, bootstrap trigger, or branch-only artifact is required for the published campaign.

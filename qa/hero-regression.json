@@ -1,0 +1,260 @@
+[
+  {
+    "name": "desktop",
+    "viewport": [
+      1440,
+      900
+    ],
+    "initial": {
+      "renderer": "semantic-svg",
+      "stage": [
+        "is-active",
+        "",
+        ""
+      ],
+      "overflow": 0,
+      "bodyWidth": 1440,
+      "viewport": 1440
+    },
+    "mid": {
+      "stage": [
+        "is-complete",
+        "is-complete",
+        "is-active"
+      ],
+      "settled": false
+    },
+    "settled": {
+      "stage": [
+        "is-complete",
+        "is-complete",
+        "is-complete"
+      ],
+      "settled": true
+    },
+    "replay": {
+      "running": true,
+      "first": "is-active"
+    },
+    "scenario": {
+      "title": "Internal AI capacity release",
+      "posture": "Pilot with a capacity contract",
+      "decision": "Pilot one workflow end to end; scale only after released capacity is visible and redeployed.",
+      "pressed": [
+        "internal"
+      ]
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "name": "laptop",
+    "viewport": [
+      1280,
+      800
+    ],
+    "initial": {
+      "renderer": "semantic-svg",
+      "stage": [
+        "is-active",
+        "",
+        ""
+      ],
+      "overflow": 0,
+      "bodyWidth": 1280,
+      "viewport": 1280
+    },
+    "mid": {
+      "stage": [
+        "is-complete",
+        "is-complete",
+        "is-active"
+      ],
+      "settled": false
+    },
+    "settled": {
+      "stage": [
+        "is-complete",
+        "is-complete",
+        "is-complete"
+      ],
+      "settled": true
+    },
+    "replay": {
+      "running": true,
+      "first": "is-active"
+    },
+    "scenario": {
+      "title": "Internal AI capacity release",
+      "posture": "Pilot with a capacity contract",
+      "decision": "Pilot one workflow end to end; scale only after released capacity is visible and redeployed.",
+      "pressed": [
+        "internal"
+      ]
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "name": "tablet",
+    "viewport": [
+      768,
+      1024
+    ],
+    "initial": {
+      "renderer": "semantic-svg",
+      "stage": [
+        "is-active",
+        "",
+        ""
+      ],
+      "overflow": 0,
+      "bodyWidth": 768,
+      "viewport": 768
+    },
+    "mid": {
+      "stage": [
+        "is-complete",
+        "is-complete",
+        "is-active"
+      ],
+      "settled": false
+    },
+    "settled": {
+      "stage": [
+        "is-complete",
+        "is-complete",
+        "is-complete"
+      ],
+      "settled": true
+    },
+    "replay": {
+      "running": true,
+      "first": "is-active"
+    },
+    "scenario": {
+      "title": "Internal AI capacity release",
+      "posture": "Pilot with a capacity contract",
+      "decision": "Pilot one workflow end to end; scale only after released capacity is visible and redeployed.",
+      "pressed": [
+        "internal"
+      ]
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "name": "mobile",
+    "viewport": [
+      390,
+      844
+    ],
+    "initial": {
+      "renderer": "semantic-svg",
+      "stage": [
+        "is-active",
+        "",
+        ""
+      ],
+      "overflow": 0,
+      "bodyWidth": 390,
+      "viewport": 390
+    },
+    "mid": {
+      "stage": [
+        "is-complete",
+        "is-complete",
+        "is-active"
+      ],
+      "settled": false
+    },
+    "settled": {
+      "stage": [
+        "is-complete",
+        "is-complete",
+        "is-complete"
+      ],
+      "settled": true
+    },
+    "replay": {
+      "running": true,
+      "first": "is-active"
+    },
+    "scenario": {
+      "title": "Internal AI capacity release",
+      "posture": "Pilot with a capacity contract",
+      "decision": "Pilot one workflow end to end; scale only after released capacity is visible and redeployed.",
+      "pressed": [
+        "internal"
+      ]
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "name": "narrow",
+    "viewport": [
+      320,
+      800
+    ],
+    "initial": {
+      "renderer": "semantic-svg",
+      "stage": [
+        "is-active",
+        "",
+        ""
+      ],
+      "overflow": 0,
+      "bodyWidth": 320,
+      "viewport": 320
+    },
+    "mid": {
+      "stage": [
+        "is-complete",
+        "is-complete",
+        "is-active"
+      ],
+      "settled": false
+    },
+    "settled": {
+      "stage": [
+        "is-complete",
+        "is-complete",
+        "is-complete"
+      ],
+      "settled": true
+    },
+    "replay": {
+      "running": true,
+      "first": "is-active"
+    },
+    "scenario": {
+      "title": "Internal AI capacity release",
+      "posture": "Pilot with a capacity contract",
+      "decision": "Pilot one workflow end to end; scale only after released capacity is visible and redeployed.",
+      "pressed": [
+        "internal"
+      ]
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "name": "reduced-motion",
+    "viewport": [
+      1440,
+      900
+    ],
+    "state": {
+      "renderer": "semantic-svg",
+      "settled": true,
+      "stages": [
+        "is-complete",
+        "is-complete",
+        "is-complete"
+      ],
+      "overflow": 0
+    },
+    "errors": []
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "name": "desktop",
+    "state": {
+      "overflow": 0,
+      "pages": 2,
+      "food": false,
+      "cover": "View Cover Letter",
+      "download": "docs/Russell-Dudek-Foundation-Data-Resume.pdf"
+    },
+    "errors": []
+  },
+  {
+    "name": "tablet",
+    "state": {
+      "overflow": 0,
+      "pages": 2,
+      "food": false,
+      "cover": "View Cover Letter",
+      "download": "docs/Russell-Dudek-Foundation-Data-Resume.pdf"
+    },
+    "errors": []
+  },
+  {
+    "name": "mobile",
+    "state": {
+      "overflow": 0,
+      "pages": 2,
+      "food": false,
+      "cover": "View Cover Letter",
+      "download": "docs/Russell-Dudek-Foundation-Data-Resume.pdf"
+    },
+    "errors": []
+  },
+  {
+    "name": "narrow",
+    "state": {
+      "overflow": 0,
+      "pages": 2,
+      "food": false,
+      "cover": "View Cover Letter",
+      "download": "docs/Russell-Dudek-Foundation-Data-Resume.pdf"
+    },
+    "errors": []
+  }
+]
