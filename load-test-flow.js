@@ -11,6 +11,14 @@ export function initLoadTestFlow() {
     document.head.appendChild(stylesheet);
   }
 
+  const correctionStyleId = 'load-test-flow-corrections';
+  if (!document.getElementById(correctionStyleId)) {
+    const correctionStyle = document.createElement('style');
+    correctionStyle.id = correctionStyleId;
+    correctionStyle.textContent = '#load-test .load-flow__signal{position:relative}#load-test .load-flow__signal::after{inset:7px;margin:0}';
+    document.head.appendChild(correctionStyle);
+  }
+
   const intro = document.querySelector('#load-test .load-test__intro > p:not(.kicker)');
   if (intro) {
     intro.textContent = 'Choose an illustrative initiative. The model contracts the work, tests revenue, capacity, trust, and adoption in parallel, then resolves the combined evidence into one executive decision posture.';
