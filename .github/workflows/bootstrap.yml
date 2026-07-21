@@ -11,10 +11,12 @@ permissions:
   contents: write
 
 jobs:
-  publish-campaign:
+  publish-source:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -22,16 +24,16 @@ jobs:
         run: |
           cat .payload/part* | base64 --decode > /tmp/foundation-source.zip
           echo '9cac3e0b2d0b56f298427cc2feb101cc32838f3873e5ec893e3d745112602d98  /tmp/foundation-source.zip' | sha256sum --check
+          git rm -rf .
           unzip -o /tmp/foundation-source.zip -d .
-          rm -rf .payload .github/workflows/bootstrap.yml
-      - name: Install document renderer
+      - name: Install PDF renderer
         run: |
           python -m pip install --upgrade pip
           pip install playwright==1.57.0 pypdf==5.9.0
           python -m playwright install --with-deps chromium
-      - name: Generate PDFs from authoritative HTML
+      - name: Generate authoritative PDFs
         run: python generate_pdfs.py
-      - name: Verify exact pagination
+      - name: Verify release contracts
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -43,17 +45,35 @@ jobs:
               'Russell-Dudek-Foundation-Data-120-Day-Plan.pdf': 2,
               'Russell-Dudek-Foundation-Data-Operating-Review.pdf': 2,
           }
-          for name, page_count in expected.items():
+          for name, pages in expected.items():
               path = Path('docs') / name
               assert path.exists() and path.stat().st_size > 0, name
               actual = len(PdfReader(str(path)).pages)
-              assert actual == page_count, f'{name}: expected {page_count}, got {actual}'
+              assert actual == pages, f'{name}: expected {pages}, got {actual}'
               print(f'{name}: {actual} pages')
+          required = [
+              'index.html', 'resume.html', 'cover-letter.html',
+              'interview-brief.html', '120-day-plan.html',
+              'operating-review.html', 'site.css', 'documents.css',
+              'app.js', 'brand-intelligence.md', 'brand-tokens.css',
+              'assets/brand/foundation-data-logo-white-trimmed.webp'
+          ]
+          for item in required:
+              path = Path(item)
+              assert path.exists() and path.stat().st_size > 0, item
+          public_text = '\n'.join(
+              p.read_text(errors='ignore')
+              for p in Path('.').rglob('*')
+              if p.is_file() and p.suffix.lower() in {'.html','.css','.js','.md','.json','.txt','.yml','.yaml'}
+          ).lower()
+          assert 'roleforge' not in public_text
+          assert 'role forge' not in public_text
           PY
-      - name: Commit complete readable campaign and downloads
+      - name: Commit and publish exact release
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git commit -m 'Publish complete audited candidate campaign'
-          git push origin main
+          git commit -m 'Publish complete Foundation Data candidate campaign'
+          git push origin HEAD:main
+          git push origin HEAD:gh-pages --force
