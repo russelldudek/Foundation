@@ -1,260 +1,90 @@
-[
-  {
-    "name": "desktop",
-    "viewport": [
-      1440,
-      900
-    ],
-    "initial": {
-      "renderer": "semantic-svg",
-      "stage": [
-        "is-active",
-        "",
-        ""
-      ],
-      "overflow": 0,
-      "bodyWidth": 1440,
-      "viewport": 1440
-    },
-    "mid": {
-      "stage": [
-        "is-complete",
-        "is-complete",
-        "is-active"
-      ],
-      "settled": false
-    },
-    "settled": {
-      "stage": [
-        "is-complete",
-        "is-complete",
-        "is-complete"
-      ],
-      "settled": true
-    },
-    "replay": {
-      "running": true,
-      "first": "is-active"
-    },
-    "scenario": {
-      "title": "Internal AI capacity release",
-      "posture": "Pilot with a capacity contract",
-      "decision": "Pilot one workflow end to end; scale only after released capacity is visible and redeployed.",
-      "pressed": [
-        "internal"
-      ]
-    },
-    "errors": [],
-    "warnings": []
+{
+  "engine": "Decision Intelligence Engine",
+  "validatedAt": "2026-07-21",
+  "implementation": {
+    "primaryRenderer": "Three.js 0.185.1",
+    "primaryModule": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js",
+    "fallbackRenderer": "semantic SVG + CSS",
+    "reducedMotion": "settled semantic state",
+    "compactViewport": "semantic SVG + interactive stages"
   },
-  {
-    "name": "laptop",
-    "viewport": [
-      1280,
-      800
+  "informationModel": {
+    "inputs": [
+      "Customer / Market signals",
+      "Product / Roadmap pressure",
+      "Operations / Capacity + risk",
+      "Data + AI / Evidence + leverage"
     ],
-    "initial": {
-      "renderer": "semantic-svg",
-      "stage": [
-        "is-active",
-        "",
-        ""
-      ],
-      "overflow": 0,
-      "bodyWidth": 1280,
-      "viewport": 1280
-    },
-    "mid": {
-      "stage": [
-        "is-complete",
-        "is-complete",
-        "is-active"
-      ],
-      "settled": false
-    },
-    "settled": {
-      "stage": [
-        "is-complete",
-        "is-complete",
-        "is-complete"
-      ],
-      "settled": true
-    },
-    "replay": {
-      "running": true,
-      "first": "is-active"
-    },
-    "scenario": {
-      "title": "Internal AI capacity release",
-      "posture": "Pilot with a capacity contract",
-      "decision": "Pilot one workflow end to end; scale only after released capacity is visible and redeployed.",
-      "pressed": [
-        "internal"
-      ]
-    },
-    "errors": [],
-    "warnings": []
+    "workflow": [
+      "Structure the problem",
+      "Apply outside perspective",
+      "Turn analysis into action"
+    ],
+    "outputs": [
+      "Priority / What moves",
+      "Owner / Who carries it",
+      "Evidence / What proves it",
+      "Next decision / When leaders act"
+    ],
+    "capabilities": [
+      "Systems thinking",
+      "AI workflow architecture",
+      "Portfolio logic",
+      "Technical translation",
+      "Executive cadence"
+    ]
   },
-  {
-    "name": "tablet",
-    "viewport": [
-      768,
-      1024
-    ],
-    "initial": {
-      "renderer": "semantic-svg",
-      "stage": [
-        "is-active",
-        "",
-        ""
-      ],
+  "fallbackHarness": [
+    {
+      "name": "desktop",
+      "viewport": [1440, 1000],
+      "phase": "2",
+      "renderer": "semantic fallback",
       "overflow": 0,
-      "bodyWidth": 768,
-      "viewport": 768
+      "pageErrors": []
     },
-    "mid": {
-      "stage": [
-        "is-complete",
-        "is-complete",
-        "is-active"
-      ],
-      "settled": false
-    },
-    "settled": {
-      "stage": [
-        "is-complete",
-        "is-complete",
-        "is-complete"
-      ],
-      "settled": true
-    },
-    "replay": {
-      "running": true,
-      "first": "is-active"
-    },
-    "scenario": {
-      "title": "Internal AI capacity release",
-      "posture": "Pilot with a capacity contract",
-      "decision": "Pilot one workflow end to end; scale only after released capacity is visible and redeployed.",
-      "pressed": [
-        "internal"
-      ]
-    },
-    "errors": [],
-    "warnings": []
-  },
-  {
-    "name": "mobile",
-    "viewport": [
-      390,
-      844
-    ],
-    "initial": {
-      "renderer": "semantic-svg",
-      "stage": [
-        "is-active",
-        "",
-        ""
-      ],
+    {
+      "name": "laptop",
+      "viewport": [1280, 800],
+      "phase": "2",
+      "renderer": "semantic fallback",
       "overflow": 0,
-      "bodyWidth": 390,
-      "viewport": 390
+      "pageErrors": []
     },
-    "mid": {
-      "stage": [
-        "is-complete",
-        "is-complete",
-        "is-active"
-      ],
-      "settled": false
-    },
-    "settled": {
-      "stage": [
-        "is-complete",
-        "is-complete",
-        "is-complete"
-      ],
-      "settled": true
-    },
-    "replay": {
-      "running": true,
-      "first": "is-active"
-    },
-    "scenario": {
-      "title": "Internal AI capacity release",
-      "posture": "Pilot with a capacity contract",
-      "decision": "Pilot one workflow end to end; scale only after released capacity is visible and redeployed.",
-      "pressed": [
-        "internal"
-      ]
-    },
-    "errors": [],
-    "warnings": []
-  },
-  {
-    "name": "narrow",
-    "viewport": [
-      320,
-      800
-    ],
-    "initial": {
-      "renderer": "semantic-svg",
-      "stage": [
-        "is-active",
-        "",
-        ""
-      ],
+    {
+      "name": "tablet",
+      "viewport": [768, 1024],
+      "phase": "2",
+      "renderer": "semantic fallback",
       "overflow": 0,
-      "bodyWidth": 320,
-      "viewport": 320
+      "pageErrors": []
     },
-    "mid": {
-      "stage": [
-        "is-complete",
-        "is-complete",
-        "is-active"
-      ],
-      "settled": false
+    {
+      "name": "mobile",
+      "viewport": [390, 844],
+      "phase": "2",
+      "renderer": "semantic fallback",
+      "overflow": 0,
+      "pageErrors": []
     },
-    "settled": {
-      "stage": [
-        "is-complete",
-        "is-complete",
-        "is-complete"
-      ],
-      "settled": true
-    },
-    "replay": {
-      "running": true,
-      "first": "is-active"
-    },
-    "scenario": {
-      "title": "Internal AI capacity release",
-      "posture": "Pilot with a capacity contract",
-      "decision": "Pilot one workflow end to end; scale only after released capacity is visible and redeployed.",
-      "pressed": [
-        "internal"
-      ]
-    },
-    "errors": [],
-    "warnings": []
+    {
+      "name": "narrow",
+      "viewport": [320, 800],
+      "phase": "2",
+      "renderer": "semantic fallback",
+      "overflow": 0,
+      "pageErrors": []
+    }
+  ],
+  "contentChecks": {
+    "foodSafetyManagementCertificationPresent": false,
+    "foodSafetyPresent": false,
+    "primaryAction": "Run the decision model",
+    "heroThesis": "Make strategy load-bearing."
   },
-  {
-    "name": "reduced-motion",
-    "viewport": [
-      1440,
-      900
-    ],
-    "state": {
-      "renderer": "semantic-svg",
-      "settled": true,
-      "stages": [
-        "is-complete",
-        "is-complete",
-        "is-complete"
-      ],
-      "overflow": 0
-    },
-    "errors": []
-  }
-]
+  "verificationNotes": [
+    "The semantic fallback was rendered in Chromium with network requests blocked to exercise the no-CDN path.",
+    "The Three.js module URL and published package version were independently verified before implementation.",
+    "The runtime caps device pixel ratio, pauses rendering offscreen, and uses the semantic path for compact viewports and reduced motion."
+  ]
+}
