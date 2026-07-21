@@ -1,0 +1,7 @@
+Foundation Data official white wordmark
+
+Original served asset: /logo-white.webp
+Retrieved from: https://foundationdata.com/_next/image?q=75&url=%2Flogo-white.webp&w=384
+Local source: foundation-data-logo-white.webp
+Transparency-only trim derivative: foundation-data-logo-white-trimmed.webp
+No tracing, recoloring, distortion, animation, or mark modification was applied.
