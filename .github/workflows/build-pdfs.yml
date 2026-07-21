@@ -1,4 +1,4 @@
-name: Build campaign PDFs
+name: Build campaign PDFs and publish site
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  build-pdfs:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -43,11 +43,13 @@ jobs:
               assert actual == pages, f'{name}: expected {pages}, got {actual}'
               print(f'{name}: {actual} pages')
           PY
-      - name: Commit generated downloads
+      - name: Commit generated downloads and publish GitHub Pages
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add docs/*.pdf
-          git diff --cached --quiet && exit 0
-          git commit -m 'Generate complete campaign PDFs'
-          git push origin main
+          if ! git diff --cached --quiet; then
+            git commit -m 'Generate complete campaign PDFs'
+            git push origin HEAD:main
+          fi
+          git push origin HEAD:gh-pages
