@@ -1,0 +1,52 @@
+{
+  "component": "Execution Load Test",
+  "validatedAt": "2026-07-21",
+  "browserPath": {
+    "browserPlugin": "not available in this session",
+    "fallback": "Playwright Chromium",
+    "navigationConstraint": "Localhost and file navigation were blocked by the execution environment, so the production DOM, CSS, and JavaScript were rendered with Playwright set_content and inline source injection."
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "size": [1440, 1000],
+      "horizontalOverflow": 0,
+      "consoleErrors": [],
+      "initialScenario": "Scout acceleration",
+      "interactionScenario": "Internal AI capacity release",
+      "interactionTrustStatus": "Constraint",
+      "selectedTabAfterInteraction": "internal",
+      "homeKeyReturnsTo": "scout"
+    },
+    {
+      "name": "mobile",
+      "size": [390, 844],
+      "horizontalOverflow": 0,
+      "consoleErrors": [],
+      "initialScenario": "Scout acceleration",
+      "interactionScenario": "Internal AI capacity release",
+      "interactionTrustStatus": "Constraint",
+      "selectedTabAfterInteraction": "internal",
+      "homeKeyReturnsTo": "scout",
+      "introCardBottom": 807.3125,
+      "loadFrameTop": 851.3125,
+      "overlap": false
+    }
+  ],
+  "behaviorChecks": {
+    "scenarioButtonsUpdateAllFields": true,
+    "diagramStatusesUpdate": true,
+    "activeTabStateUpdates": true,
+    "arrowAndHomeEndKeyboardNavigation": true,
+    "resetReturnsToScout": true,
+    "replayRestartsLoadTransfer": true,
+    "ariaBusyTracksAnimation": true,
+    "reducedMotionSettlesImmediately": true
+  },
+  "contentLogic": {
+    "dimensions": ["Revenue", "Capacity", "Trust", "Adoption"],
+    "scenarios": ["Scout", "Tagging", "Analytics", "Internal AI"],
+    "decisionFlow": "Objective + accountable owner + dependency + evidence -> recommended next decision",
+    "disclaimerPresent": true
+  }
+}
