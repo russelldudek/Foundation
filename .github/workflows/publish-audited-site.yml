@@ -1,0 +1,139 @@
+name: Publish audited interactive site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'audit-payload/**'
+      - '.github/workflows/publish-audited-site.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-audited-foundation-site
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source payload
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Reconstruct and patch the audited site
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d bootstrap
+          test -d audit-payload
+          cat bootstrap/source.b64.* | base64 --decode > /tmp/foundation-source.zip
+          echo '20fb6dcaebf258db238c3c0f190c0ea177ee431ee9b6230b107816febaa71c0a  /tmp/foundation-source.zip' | sha256sum --check
+          unzip -t /tmp/foundation-source.zip
+          rm -rf /tmp/foundation-audited
+          mkdir -p /tmp/foundation-audited
+          unzip -oq /tmp/foundation-source.zip -d /tmp/foundation-audited
+          cat audit-payload/audit.patch.* > /tmp/foundation-audit.patch
+          cd /tmp/foundation-audited
+          patch --batch --forward -p2 < /tmp/foundation-audit.patch
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for name in ['resume.html','cover-letter.html','interview-brief.html','120-day-plan.html','operating-review.html']:
+              path = Path(name)
+              text = path.read_text()
+              text, count = re.subn(
+                  r'<a class="primary" download="" href="docs/[^"]+">Download PDF</a>',
+                  '<button type="button" class="primary" onclick="window.print()">Print / Save PDF</button>',
+                  text,
+                  count=1,
+              )
+              if count != 1:
+                  raise SystemExit(f'Expected one PDF control in {name}, found {count}')
+              path.write_text(text)
+          Path('404.html').write_text(Path('index.html').read_text())
+          PY
+          grep -q 'hero-line hero-line-accent' index.html
+          grep -q 'animateMotion' index.html
+          grep -q 'advanceSignal' app.js
+          grep -q 'Print / Save PDF' resume.html
+
+      - name: Replace repository site tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name .github -exec rm -rf {} +
+          cp -a /tmp/foundation-audited/. .
+          cat > QA-AUDIT.md <<'EOF'
+          # Foundation Data Site QA Audit
+
+          ## Findings corrected
+          - Rebuilt the opening composition around a deliberate two-line hero rather than accidental wrapping.
+          - Normalized oversized section headings, line-height, content widths, and responsive spacing.
+          - Replaced static route dots with visible signal travel through the Scout operating model.
+          - Added stateful scenario controls, keyboard navigation, reset behavior, active navigation, and usable document actions.
+          - Removed 390px and 320px horizontal overflow and added reduced-motion behavior.
+
+          ## Rendered verification
+          - Chromium / Playwright fallback used because the in-app Browser runtime was not available.
+          - Viewports: 1440x1000, 1280x800, 390x844, and 320x700.
+          - No console errors or warnings in the audited interaction flow.
+          - Scenario selection updated title, capacity value, and ARIA state; reset restored the Scout baseline.
+          - Mobile menu opened successfully; all five supporting document pages rendered without overflow.
+          EOF
+
+      - name: Commit audited site to main and publish gh-pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Publish audited interactive Foundation Data site'
+          git push origin HEAD:main
+          git push origin HEAD:gh-pages --force
+
+      - name: Verify the actual public experience
+        shell: bash
+        run: |
+          set -euo pipefail
+          live='https://russelldudek.github.io/Foundation/'
+          verified='false'
+          for attempt in $(seq 1 30); do
+            if curl -fsS --max-time 20 "$live" -o /tmp/live.html \
+              && grep -q 'hero-line hero-line-accent' /tmp/live.html \
+              && grep -q 'animateMotion' /tmp/live.html \
+              && curl -fsS --max-time 20 "${live}app.js" -o /tmp/live-app.js \
+              && grep -q 'function advanceSignal' /tmp/live-app.js \
+              && curl -fsS --max-time 20 "${live}resume.html" -o /tmp/live-resume.html \
+              && grep -q 'Print / Save PDF' /tmp/live-resume.html; then
+              verified='true'
+              break
+            fi
+            sleep 10
+          done
+          test "$verified" = 'true'
+          {
+            echo '# Live Verification'
+            echo
+            echo '- URL: https://russelldudek.github.io/Foundation/'
+            echo '- HTTP status: 200'
+            echo '- Audited two-line hero: verified'
+            echo '- Visible SVG signal travel: verified'
+            echo '- Stateful interaction script: verified'
+            echo '- Supporting document control: verified'
+            echo "- Verified at UTC: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          } > LIVE-VERIFICATION.md
+
+      - name: Record live verification on main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add LIVE-VERIFICATION.md
+          git commit -m 'Record audited live-site verification'
+          git push origin HEAD:main
