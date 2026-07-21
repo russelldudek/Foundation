@@ -21,7 +21,7 @@ jobs:
           python-version: '3.12'
       - name: Reconstruct audited readable source
         run: |
-          cat .payload/part0* | base64 --decode > /tmp/foundation-hero-source.zip
+          { cat .payload/part00; cat .payload/fix01a; cat .payload/fix01b; cat .payload/part02; cat .payload/part03; } | base64 --decode > /tmp/foundation-hero-source.zip
           echo 'a0f3f301f5d1462dcdf1933e1c86876ff3e97855b7905ea7aec4484778bb9ed2  /tmp/foundation-hero-source.zip' | sha256sum --check
           unzip -o /tmp/foundation-hero-source.zip -d .
           cp .payload/build-pdfs-standard.yml .github/workflows/build-pdfs.yml
