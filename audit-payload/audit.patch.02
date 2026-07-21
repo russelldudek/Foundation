@@ -1,0 +1,4 @@
+llIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
++    history.replaceState(null, '', link.getAttribute('href'));
++  });
++});
